@@ -7,11 +7,11 @@ Lajittelualgoritmien suorituskykyä vertaillaan kahdella eri syötekoolla (100 0
 
 * **Ohjelmointikieli:** Java (`System.nanoTime()` suoritusajan mittaukseen)
 * **Testatut algoritmit:**
-  * **Insertion Sort** (lisäyslajittelu)
-  * **Bubble Sort** (kuplalajittelu)
-  * **Shellsort** (askelväli puolittuu joka kierroksella: `gap /= 2`)
-  * **Quicksort** (optimoitu valitsemalla jakoalkio keskeltä: `low + (high - low) / 2`)
-  * **Arrays.sort** (Javan sisäänrakennettu Dual-Pivot Quicksort)
+  * **Insertion Sort** 
+  * **Bubble Sort** 
+  * **Shellsort** 
+  * **Quicksort**
+  * **Arrays.sort** 
 * **Testauksen luotettavuus:** Jokaiselle algoritmille luotiin identtinen kopio alkuperäisestä taulukosta (`originalData.clone()`) ennen ajanoton käynnistämistä. Ajanmittaus toteutettiin modulaarisesti funktioreferenssien (`Consumer<int[]>`) avulla.
 
 ---
