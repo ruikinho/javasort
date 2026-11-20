@@ -12,7 +12,6 @@ Lajittelualgoritmien suorituskykyä vertaillaan kahdella eri syötekoolla (100 0
   * **Shellsort** 
   * **Quicksort**
   * **Arrays.sort** 
-* **Testauksen luotettavuus:** Jokaiselle algoritmille luotiin identtinen kopio alkuperäisestä taulukosta (`originalData.clone()`) ennen ajanoton käynnistämistä. Ajanmittaus toteutettiin modulaarisesti funktioreferenssien (`Consumer<int[]>`) avulla.
 
 ---
 
@@ -20,7 +19,7 @@ Lajittelualgoritmien suorituskykyä vertaillaan kahdella eri syötekoolla (100 0
 
 Kun lukujen määrä (n) **10-kertaistuu** (esim. 100 000 $\rightarrow$ 1 000 000):
 * **Lineaarinen (O(n)):** Aika **10-kertaistuu** (erittäin nopea).
-* **Logaritminen (O(n \log n)):** Aika kasvaa vain **noin 12-kertaiseksi** (tehokas).
+* **Logaritminen (O(n log n)):** Aika kasvaa vain **noin 12-kertaiseksi** (tehokas).
 * **Neliöllinen (O(n^2)):** Aika **100-kertaistuu** ($10 \times 10 = 100$, erittäin hidas).
 
 | Algoritmi | Valmiiksi järjestyksessä | Satunnainen järjestys | Täysin väärinpäin | Käytännön selitys |
@@ -60,22 +59,12 @@ Kun lukujen määrä (n) **10-kertaistuu** (esim. 100 000 $\rightarrow$ 1 000 00
 ## 4. Tulosten analyysi ja pohdinta
 
 ### Ovatko tulokset järkeviä ja aikavaativuuksien mukaisia?
-Kyllä. Mittaustulokset noudattavat teoreettisia aikavaativuuksia erittäin tarkasti, kun syötekoko $N$ kymmenkertaistuu ($100\,000 \rightarrow 1\,000\,000$):
+Tulokset olivat järkeviä ja aikavaativuuksien mukaisia, kun lukujen määrä (N) 10-kertaistui (100 000 -> 1 000 000):
 
-1. **Neliölliset $O(n^2)$-algoritmit ($100\times$-kasvu):**
-   Kun alkioiden määrä kymmenkertaistuu, $O(n^2)$-algoritmien suoritusajan pitäisi teoriassa satakertaistua ($10^2 = 100$). Mittauksissa kertoimet olivat lähes täsmälleen 100:
-   * **Bubble Sort (satunnainen):** $21,38\text{ s} \rightarrow 2086,78\text{ s}$ (kerroin **97,6x**)
-   * **Bubble Sort (laskeva):** $6,03\text{ s} \rightarrow 579,42\text{ s}$ (kerroin **96,1x**)
-   * **Insertion Sort (satunnainen):** $4,68\text{ s} \rightarrow 446,62\text{ s}$ (kerroin **95,5x**)
-   * **Insertion Sort (laskeva):** $9,21\text{ s} \rightarrow 839,62\text{ s}$ (kerroin **91,2x**)
+* **Hitaat algoritmit (O(n^2)):** Bubble sortilla ja Insertion sortilla aika kasvoi suunnilleen 100-kertaiseksi, kun lukuja oli 10 kertaa enemmän. Esimerkiksi Bubble sortilla satunnaisella listalla aika nousi noin 21 sekunnista yli 2086 sekuntiin (melkein 35 minuuttiin). Laskevassa järjestyksessä Insertion sortilla aika nousi 9 sekunnista 839 sekuntiin. Tämä vastaa hyvin O(n^2)-aikavaativuutta.
+* **Nouseva järjestys ja O(n):** Valmiiksi järjestyksessä olevalla listalla Insertion sort oli tosi nopea (0,001 s -> 0,012 s), koska sen tarvitsi vain käydä lista kerran läpi ja todeta että se on jo kunnossa (O(n)). Bubble sortilla meni silti melkein 5 minuuttia miljoonalla luvulla, koska siinä ei ollut mitään tarkistusta joka lopettaisi sen ajoissa, vaan se kävi kaikki kierrokset läpi turhaan.
+* **Nopeat algoritmit (O(n log n)):** Shellsort, Quicksort ja Javan oma Arrays.sort olivat kaikki todella nopeita jopa miljoonalla luvulla (alle sekunnin). Niillä aika kasvoi vain noin 6–10-kertaiseksi, kun lukujen määrä 10-kertaistui.
 
-2. **Lineaarinen $O(n)$-käyttäytyminen ($10\times$-kasvu):**
-   Valmiiksi nousevassa järjestyksessä **Insertion Sort** tarkistaa vain kerran, että alkiot ovat paikallaan, jolloin sen aikavaativuus on $O(n)$. Kun $N$ kymmenkertaistui, aika kasvoi suhteessa $0,0011\text{ s} \rightarrow 0,0127\text{ s}$ (kerroin **11,6x**), mikä vastaa lineaarista skaalautumista. **Bubble Sort** (286,86 s) sen sijaan teki kaikki $n^2$ vertailua ilman vaihtoja, koska toteutuksessa ei ollut keskeytystä.
-
-3. **Logaritmiset $O(n \log n)$-algoritmit:**
-   **Quicksort** ($0,027\text{ s} \rightarrow 0,207\text{ s}$, kerroin **7,6x**), **Shellsort** ($0,031\text{ s} \rightarrow 0,304\text{ s}$, kerroin **9,7x**) ja **Arrays.sort** ($0,037\text{ s} \rightarrow 0,217\text{ s}$, kerroin **5,9x**) skaalautuivat erittäin tehokkaasti. Pieni suhteellinen nopeutuminen johtuu Javan JIT-kääntäjän optimoinneista pidemmän ajon aikana.
-
-### Erityishuomioita algoritmien eroista
-* **Insertion Sortin puolittuminen satunnaisella datalla:** Satunnaisessa järjestyksessä Insertion Sort on noin kaksi kertaa nopeampi (446,6 s) kuin laskevassa järjestyksessä (839,6 s), koska keskimäärin alkio siirtyy vain puoliväliin jo järjestettyä osaa ($\frac{n^2}{4}$ siirtoa) pahimman tapauksen ($\frac{n^2}{2}$ siirtoa) sijaan.
-* **Quicksortin optimoinnin merkitys:** Valitsemalla jakoalkio (`pivot`) osataulukon keskeltä vältettiin rekursion epätasapaino ja `StackOverflowError`-virhe valmiiksi järjestetyillä (nouseva ja laskeva) taulukoilla.
-* **Javan `Arrays.sort`-metodin ylivoima järjestetyllä datalla:** Miljoonan alkion nousevassa ja laskevassa järjestyksessä `Arrays.sort` oli selvästi nopein (0,004 s ja 0,007 s), koska sen Dual-Pivot Quicksort -toteutus tunnistaa valmiiksi järjestyksessä olevat alijonot suoraan.
+### Muita huomioita
+* **Insertion sortin ero satunnaisella ja laskevalla listalla:** Satunnaisella listalla Insertion sort oli noin tuplasti nopeampi (446 s) kuin laskevalla listalla (839 s). Se käy järkeen, koska väärinpäin olevalla listalla jokainen luku joudutaan siirtämään ihan alkuun asti, kun taas satunnaisella listalla niitä siirretään keskimäärin vain puoliväliin.
+* **Quicksortin optimointi:** Kun Quicksortissa valittiin jakoalkio (pivot) keskeltä eikä reunasta, se ei kaatunut (`StackOverflowError`) valmiiksi järjestetyillä listoilla, vaan pysyi tosi nopeana (n. 0,039 s).
