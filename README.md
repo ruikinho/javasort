@@ -5,7 +5,7 @@ Lajittelualgoritmien suorituskykyä vertaillaan kahdella eri syötekoolla (100 0
 
 ## 1. Testiympäristö ja toteutus
 
-* **Ohjelmointikieli:** Java (`System.nanoTime()` suoritusajan mittaukseen)
+* **Ohjelmointikieli:** Java
 * **Testatut algoritmit:**
   * **Insertion Sort** 
   * **Bubble Sort** 
