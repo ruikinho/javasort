@@ -59,9 +59,8 @@ Kun lukujen määrä (n) **10-kertaistuu** (esim. 100 000 $\rightarrow$ 1 000 00
 ## 4. Tulosten analyysi ja pohdinta
 
 ### Ovatko tulokset järkeviä ja aikavaativuuksien mukaisia?
-Tulokset olivat järkeviä ja aikavaativuuksien mukaisia, kun lukujen määrä (N) 10-kertaistui (100 000 -> 1 000 000):
+Tulokset olivat järkeviä ja vastasivat sitä, miten näiden algoritmien kuuluukin toimia, kun lukujen määrä 10-kertaistui (100 000 -> 1 000 000):
 
-* **Hitaat algoritmit (O(n^2)):** Bubble sortilla ja Insertion sortilla aika kasvoi suunnilleen 100-kertaiseksi, kun lukuja oli 10 kertaa enemmän. Esimerkiksi Bubble sortilla satunnaisella listalla aika nousi noin 21 sekunnista yli 2086 sekuntiin (melkein 35 minuuttiin). Laskevassa järjestyksessä Insertion sortilla aika nousi 9 sekunnista 839 sekuntiin. Tämä vastaa hyvin O(n^2)-aikavaativuutta.
-* **Nouseva järjestys ja O(n):** Valmiiksi järjestyksessä olevalla listalla Insertion sort oli tosi nopea (0,001 s -> 0,012 s), koska sen tarvitsi vain käydä lista kerran läpi ja todeta että se on jo kunnossa (O(n)). Bubble sortilla meni silti melkein 5 minuuttia miljoonalla luvulla, koska siinä ei ollut mitään tarkistusta joka lopettaisi sen ajoissa, vaan se kävi kaikki kierrokset läpi turhaan.
-* **Nopeat algoritmit (O(n log n)):** Shellsort, Quicksort ja Javan oma Arrays.sort olivat kaikki todella nopeita jopa miljoonalla luvulla (alle sekunnin). Niillä aika kasvoi vain noin 6–10-kertaiseksi, kun lukujen määrä 10-kertaistui.
-
+* **Hitaat algoritmit:** Bubble sortilla ja Insertion sortilla aika kasvoi suunnilleen 100-kertaiseksi, kun lukuja oli 10 kertaa enemmän. Esimerkiksi Bubble sortilla satunnaisella listalla aika nousi noin 21 sekunnista yli 2086 sekuntiin (melkein 35 minuuttiin). Laskevassa järjestyksessä Insertion sortilla aika nousi 9 sekunnista 839 sekuntiin. Tämä on ihan normaalia näille yksinkertaisemmille algoritmeille.
+* **Nouseva järjestys:** Valmiiksi järjestyksessä olevalla listalla Insertion sort oli tosi nopea (0,001 s -> 0,012 s), koska sen tarvitsi vain käydä lista kerran läpi ja todeta että se on jo kunnossa. Bubble sortilla meni silti melkein 5 minuuttia miljoonalla luvulla, koska siinä ei ollut mitään tarkistusta joka lopettaisi sen ajoissa, vaan se kävi kaikki kierrokset läpi turhaan.
+* **Nopeat algoritmit:** Shellsort, Quicksort ja Javan oma Arrays.sort olivat kaikki todella nopeita jopa miljoonalla luvulla (alle sekunnin). Niillä aika kasvoi vain noin 6–10-kertaiseksi, kun lukujen määrä 10-kertaistui.
