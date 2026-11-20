@@ -65,6 +65,3 @@ Tulokset olivat järkeviä ja aikavaativuuksien mukaisia, kun lukujen määrä (
 * **Nouseva järjestys ja O(n):** Valmiiksi järjestyksessä olevalla listalla Insertion sort oli tosi nopea (0,001 s -> 0,012 s), koska sen tarvitsi vain käydä lista kerran läpi ja todeta että se on jo kunnossa (O(n)). Bubble sortilla meni silti melkein 5 minuuttia miljoonalla luvulla, koska siinä ei ollut mitään tarkistusta joka lopettaisi sen ajoissa, vaan se kävi kaikki kierrokset läpi turhaan.
 * **Nopeat algoritmit (O(n log n)):** Shellsort, Quicksort ja Javan oma Arrays.sort olivat kaikki todella nopeita jopa miljoonalla luvulla (alle sekunnin). Niillä aika kasvoi vain noin 6–10-kertaiseksi, kun lukujen määrä 10-kertaistui.
 
-### Muita huomioita
-* **Insertion sortin ero satunnaisella ja laskevalla listalla:** Satunnaisella listalla Insertion sort oli noin tuplasti nopeampi (446 s) kuin laskevalla listalla (839 s). Se käy järkeen, koska väärinpäin olevalla listalla jokainen luku joudutaan siirtämään ihan alkuun asti, kun taas satunnaisella listalla niitä siirretään keskimäärin vain puoliväliin.
-* **Quicksortin optimointi:** Kun Quicksortissa valittiin jakoalkio (pivot) keskeltä eikä reunasta, se ei kaatunut (`StackOverflowError`) valmiiksi järjestetyillä listoilla, vaan pysyi tosi nopeana (n. 0,039 s).
