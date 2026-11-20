@@ -16,15 +16,20 @@ Lajittelualgoritmien suorituskykyä vertaillaan kahdella eri syötekoolla (100 0
 
 ---
 
-## 2. Teoreettiset aikavaativuudet ($O$-notaatio)
+## 2. Teoreettiset nopeusluokat (miten aika kasvaa, kun data lisääntyy)
 
-| Algoritmi | Paras tapaus | Keskimääräinen | Pahin tapaus | Huomioita toteutuksesta |
+Kun lukujen määrä ($n$) **10-kertaistuu** (esim. 100 000 $\rightarrow$ 1 000 000):
+* **Lineaarinen ($O(n)$):** Aika **10-kertaistuu** (erittäin nopea).
+* **Logaritminen ($O(n \log n)$):** Aika kasvaa vain **noin 12-kertaiseksi** (tehokas).
+* **Neliöllinen ($O(n^2)$):** Aika **100-kertaistuu** ($10 \times 10 = 100$, erittäin hidas).
+
+| Algoritmi | Valmiiksi järjestyksessä | Satunnainen järjestys | Täysin väärinpäin | Käytännön selitys |
 | :--- | :--- | :--- | :--- | :--- |
-| **Bubble Sort** | $O(n^2)$ | $O(n^2)$ | $O(n^2)$ | Perusversio ilman `swapped`-keskeytystä; tekee aina täydet kierrokset |
-| **Insertion Sort** | $O(n)$ | $O(n^2)$ | $O(n^2)$ | Erittäin nopea valmiiksi nousevassa järjestyksessä olevalle datalle |
-| **Shellsort** | $O(n \log n)$ | $O(n^{1.3}) \dots O(n^{1.5})$ | $O(n^2)$ | Tehostaa lisäyslajittelua siirtämällä alkioita aluksi pitkillä askelilla |
-| **Quicksort** | $O(n \log n)$ | $O(n \log n)$ | $O(n^2)$ | Keskimmäisen alkion valinta pivotiksi estää pahimman tapauksen |
-| **Arrays.sort** | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | Javan pitkälle optimoitu Dual-Pivot Quicksort |
+| **Bubble Sort** | Hidas ($100\times$) | Hidas ($100\times$) | Hidas ($100\times$) | Käy listan läpi aina kokonaan, vaikka se olisi jo valmis |
+| **Insertion Sort** | **Supernopea ($10\times$)** | Hidas ($100\times$) | Hidas ($100\times$) | Valmiilla listalla vain tarkistaa järjestyksen yhdellä läpikäynnillä |
+| **Shellsort** | Tehokas | Tehokas | Hidas ($100\times$) | Siirtää lukuja aluksi pitkillä hypyillä, mikä nopeuttaa loppua |
+| **Quicksort** | Tehokas | Tehokas | Tehokas | Jakaa listan aina keskeltä kahtia, joten se pysyy nopeana kaikilla listoilla |
+| **Arrays.sort** | Tehokas | Tehokas | Tehokas | Javan oma huippuunsa viritetty valmis lajittelu |
 
 ---
 
