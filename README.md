@@ -18,10 +18,10 @@ Lajittelualgoritmien suorituskykyä vertaillaan kahdella eri syötekoolla (100 0
 
 ## 2. Teoreettiset nopeusluokat (miten aika kasvaa, kun data lisääntyy)
 
-Kun lukujen määrä ($n$) **10-kertaistuu** (esim. 100 000 $\rightarrow$ 1 000 000):
-* **Lineaarinen ($O(n)$):** Aika **10-kertaistuu** (erittäin nopea).
-* **Logaritminen ($O(n \log n)$):** Aika kasvaa vain **noin 12-kertaiseksi** (tehokas).
-* **Neliöllinen ($O(n^2)$):** Aika **100-kertaistuu** ($10 \times 10 = 100$, erittäin hidas).
+Kun lukujen määrä (n) **10-kertaistuu** (esim. 100 000 $\rightarrow$ 1 000 000):
+* **Lineaarinen (O(n)):** Aika **10-kertaistuu** (erittäin nopea).
+* **Logaritminen (O(n \log n)):** Aika kasvaa vain **noin 12-kertaiseksi** (tehokas).
+* **Neliöllinen (O(n^2)):** Aika **100-kertaistuu** ($10 \times 10 = 100$, erittäin hidas).
 
 | Algoritmi | Valmiiksi järjestyksessä | Satunnainen järjestys | Täysin väärinpäin | Käytännön selitys |
 | :--- | :--- | :--- | :--- | :--- |
